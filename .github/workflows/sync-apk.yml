@@ -1,0 +1,96 @@
+name: Sync APK stables (kabiyesi-apk)
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "23 3 * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-22.04
+    env:
+      GH_TOKEN: ${{ secrets.KABIYESI_GH_TOKEN }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Prepare
+        run: |
+          echo "D=${{ github.workspace }}/_apk" >> "$GITHUB_ENV"
+          echo "TODAY=$(date +%F)" >> "$GITHUB_ENV"
+          mkdir -p "${{ github.workspace }}/_apk"
+
+      - name: Download client APK
+        run: gh -R batjs16-rgb/ozelservices-client release download client-latest --pattern "client-app-release.apk" --dir "$D"
+
+      - name: Download livreur APK
+        run: gh -R batjs16-rgb/ozelservices-livreur release download livreur-latest --pattern "livreur-app-release.apk" --dir "$D"
+
+      - name: Publish APKs on kabiyesi-apk
+        run: |
+          gh -R batjs16-rgb/kabiyesi-apk release upload client-latest  "$D/client-app-release.apk" --clobber
+          gh -R batjs16-rgb/kabiyesi-apk release upload livreur-latest "$D/livreur-app-release.apk" --clobber
+
+      - name: Update release notes
+        run: |
+          set -euo pipefail
+          sha256() { sha256sum "$1" | cut -d' ' -f1; }
+          mo() { awk -v b="$(stat -c %s "$1")" 'BEGIN{printf "%.1f", b/1048576}' | tr '.' ','; }
+
+          csha=$(sha256 "$D/client-app-release.apk"); cmo=$(mo "$D/client-app-release.apk")
+          lsha=$(sha256 "$D/livreur-app-release.apk"); lmo=$(mo "$D/livreur-app-release.apk")
+
+          cat > NOTES-CLIENT.md <<EOF
+          ## Notes de version — Application Client
+
+          - **Fichier** : \`client-app-release.apk\`
+          - **Taille** : $cmo Mo
+          - **SHA-256** : \`$csha\`
+          - **Build** : signé en release (clé d'upload du projet, hors de ce dépôt)
+          - **Date** : $TODAY
+
+          Application Client KABIYESI by OzelServices : commande de repas (notation du
+          restaurant à la fin de la commande), envoi de colis et suivi. Installation
+          directe en APK, hors Google Play pour le moment.
+
+          ### Vérification d'intégrité
+
+          \`\`\`sh
+          shasum -a 256 client-app-release.apk
+          # doit correspondre au SHA-256 ci-dessus
+          \`\`\`
+          EOF
+
+          cat > NOTES-LIVREUR.md <<EOF
+          ## Notes de version — Application Livreur
+
+          - **Fichier** : \`livreur-app-release.apk\`
+          - **Taille** : $lmo Mo
+          - **SHA-256** : \`$lsha\`
+          - **Build** : signé en release
+          - **Date** : $TODAY
+
+          Application Livreur KABIYESI by OzelServices : recevoir, accepter et suivre
+          les courses au quotidien (correction du code d'authentification à 6 chiffres).
+          Installation directe en APK.
+
+          ### Vérification d'intégrité
+
+          \`\`\`sh
+          shasum -a 256 livreur-app-release.apk
+          # doit correspondre au SHA-256 ci-dessus
+          \`\`\`
+          EOF
+
+          git config user.name "ozel-bot"
+          git config user.email "ozel-bot@users.noreply.github.com"
+          git add NOTES-CLIENT.md NOTES-LIVREUR.md
+          if ! git diff --cached --quiet; then
+            git commit -m "chore(notes): sync APK du $TODAY"
+            git push
+          else
+            echo "notes inchangées"
+          fi
