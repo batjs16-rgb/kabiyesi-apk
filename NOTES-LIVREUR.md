@@ -1,13 +1,14 @@
 ## Notes de version — Application Livreur
 
 - **Fichier** : `livreur-app-release.apk`
-- **Taille** : 60,2 Mo
-- **SHA-256** : `a6f2446360fdc6bdd48fe1dbc40523a6a9d70480d9e4585445bea5ed9012115c`
+- **Taille** : 57,7 Mo
+- **SHA-256** : `e237cdf9bcd865a2e87b286c9bbf7e5cce2a6b96473190ad5021ea05ad8af96e`
 - **Build** : signé en release
-- **Date** : 2026-10-01
+- **Date** : 2026-10-09
 
-Application Livreur KABIYESI by OzelServices : recevoir, accepter et
-suivre les courses au quotidien. Installation directe en APK.
+Application Livreur KABIYESI by OzelServices : recevoir, accepter et suivre
+les courses au quotidien (correction du code d'authentification à 6 chiffres).
+Installation directe en APK.
 
 ### Vérification d'intégrité
 
