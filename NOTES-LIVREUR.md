@@ -1,8 +1,8 @@
 ## Notes de version — Application Livreur
 
 - **Fichier** : `livreur-app-release.apk`
-- **Taille** : 57,7 Mo
-- **SHA-256** : `47eddd98f157901fe1d2782e685825ddebec349c81a6b64ce91b2867cc643e7c`
+- **Taille** : 58,1 Mo
+- **SHA-256** : `53c9b350804a0de9ad76466aefeef7e1c5558edb2fe775462e0bad98d7020b76`
 - **Build** : signé en release
 - **Date** : 2026-10-16
 
