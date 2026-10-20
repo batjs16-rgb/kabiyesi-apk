@@ -2,7 +2,7 @@
 
 - **Fichier** : `client-app-release.apk`
 - **Taille** : 68,5 Mo
-- **SHA-256** : `35c69fd33909b2be641f0bbe5ce70ef3c7f7927c8a4facd3683d412957b66ffd`
+- **SHA-256** : `3042b0c0735042511bfe10a39d0b00074119616ebe12580b1d2c8c7167e20c97`
 - **Build** : signé en release (clé d'upload du projet, hors de ce dépôt)
 - **Date** : 2026-10-20
 
