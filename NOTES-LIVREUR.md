@@ -4,7 +4,7 @@
 - **Taille** : 58,8 Mo
 - **SHA-256** : `986fbd83c3f4c96c36194064c6d8b35278114fcb15aef1c862e374aed7aff0e5`
 - **Build** : signé en release
-- **Date** : 2026-10-20
+- **Date** : 2026-10-21
 
 Application Livreur KABIYESI by OzelServices : recevoir, accepter et suivre
 les courses au quotidien (correction du code d'authentification à 6 chiffres).
