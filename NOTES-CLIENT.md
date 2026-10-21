@@ -1,8 +1,8 @@
 ## Notes de version — Application Client
 
 - **Fichier** : `client-app-release.apk`
-- **Taille** : 68,5 Mo
-- **SHA-256** : `6f7ab892db9e7eebeced65dec2002ef5c68fed3f62dd9cc057e17e7f81a8f3f5`
+- **Taille** : 68,7 Mo
+- **SHA-256** : `868018d2faca91e8ff9d7c19e0dcb8a64dfe088afa15811cd6eb947857f4f4f8`
 - **Build** : signé en release (clé d'upload du projet, hors de ce dépôt)
 - **Date** : 2026-10-21
 
