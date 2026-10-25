@@ -2,7 +2,7 @@
 
 - **Fichier** : `livreur-app-release.apk`
 - **Taille** : 59,0 Mo
-- **SHA-256** : `c98061ba227ba739aabc05c57d1ab22a14e3229b262cfa525df70415de6979f3`
+- **SHA-256** : `2b26e57dba8b08364935ac17611d9a4254652034489eb03226ccc248e4e9333c`
 - **Build** : signé en release
 - **Date** : 2026-10-25
 
