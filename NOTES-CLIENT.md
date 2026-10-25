@@ -4,7 +4,7 @@
 - **Taille** : 68,7 Mo
 - **SHA-256** : `7372b193437a862cb88a6842353df5c6b970e52838ae9090f1e1c214b441dc28`
 - **Build** : signé en release (clé d'upload du projet, hors de ce dépôt)
-- **Date** : 2026-10-24
+- **Date** : 2026-10-25
 
 Application Client KABIYESI by OzelServices : commande de repas (notation du
 restaurant à la fin de la commande), envoi de colis et suivi. Installation
